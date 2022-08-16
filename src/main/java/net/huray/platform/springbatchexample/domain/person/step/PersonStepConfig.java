@@ -2,6 +2,7 @@ package net.huray.platform.springbatchexample.domain.person.step;
 
 import lombok.RequiredArgsConstructor;
 import net.huray.platform.springbatchexample.domain.person.dto.PersonDto;
+import net.huray.platform.springbatchexample.global.error.GlobalExceptionHandler;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
 public class PersonStepConfig {
 
     private final StepBuilderFactory stepBuilderFactory;
+    private final GlobalExceptionHandler globalExceptionHandler;
 
     private final ItemReader<PersonDto> csvReader;
     private final ItemProcessor<PersonDto, String> csvConvertTxtProcessor;
@@ -36,6 +38,7 @@ public class PersonStepConfig {
                 .skipLimit(1)
 //                .retry(FlatFileParseException.class)
 //                .retryLimit(1)
+                .exceptionHandler(globalExceptionHandler)
                 .build();
     }
 
