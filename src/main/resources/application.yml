@@ -5,3 +5,38 @@ spring:
   sql:
     init:
       schema-locations: classpath:/org/springframework/batch/core/schema-h2.sql
+  batch:
+    job:
+      enabled: false
+
+  # spring cloud stream functional 버전 config
+  cloud:
+    function:
+      definition: direct
+    stream:
+      bindings:
+        direct-in-0:
+          binder: rabbit
+          destination: test
+      binders:
+        rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 127.0.0.1
+                port: 55001
+                username: guest
+                password: guest
+
+
+  # RabbitMQ config
+  rabbitmq:
+    host: 127.0.0.1
+    port: 55001
+    username: guest
+    password: guest
+
+
+server:
+  port: 8081

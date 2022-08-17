@@ -23,6 +23,13 @@ dependencies {
     // lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+
+    // spring cloud stream
+    implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit:3.2.4'
+    // RabbitMQ serialization
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3'
+
 }
 
 tasks.named('test') {
