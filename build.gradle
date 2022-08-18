@@ -17,6 +17,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     testImplementation 'org.springframework.batch:spring-batch-test'
 
+    // quartz
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'
+
     // h2
     implementation 'com.h2database:h2:2.1.214'
 

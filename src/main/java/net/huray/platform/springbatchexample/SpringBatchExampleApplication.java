@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -39,7 +38,7 @@ public class SpringBatchExampleApplication {
                             log.info("##### message for direct : {}", myMessage.getMessage());
                             try {
                                 jobLauncher.run(extractionPersonNameJob, new JobParametersBuilder()
-                                        .addString("message", myMessage.getMessage())
+                                        .addString("message", "[rabbitmq] " + myMessage.getMessage())
                                         .toJobParameters());
                             } catch (Exception e) {
                                 log.error(e.getMessage());
